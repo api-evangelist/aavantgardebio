@@ -1,0 +1,38 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Live DNS/TLS/HTTP probes of the hosts this record knows on 2026-09-05. AAVantgarde
+  publishes no API, so the only hosts in scope are the corporate site and its
+  registrable domain; api./developer./docs./status./trust. subdomains all NXDOMAIN.
+note: >-
+  The origin sits behind Cloudflare and answered our probe IP with HTTP 403 "Sorry, you
+  have been blocked" on most HTML paths, so header values below were read from the
+  response headers Cloudflare still returned (HSTS is set on the 403 as well as on the
+  200 homepage). /.well-known/* paths were served normally.
+hosts:
+- host: www.aavantgarde.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  8 22:33:42 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+  hsts_preload: true
+  x_content_type_options: nosniff
+  x_frame_options: SAMEORIGIN
+  referrer_policy: same-origin
+  content_security_policy: true
+  csp_note: >-
+    CSP is present but permissive — default-src *, script-src 'self' 'unsafe-inline'
+    'unsafe-eval' *.
+  edge: cloudflare
+domains:
+- domain: aavantgarde.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+  dmarc_note: >-
+    DMARC record published but policy is p=none — monitoring only, no enforcement
+    against spoofed mail.

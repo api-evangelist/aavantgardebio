@@ -1,17 +1,39 @@
 aid: aavantgardebio
-name: Aavantgardebio
-description: 'Aavantgardebio is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+name: AAVantgarde Bio
+description: >-
+  AAVantgarde Bio is a clinical-stage biotechnology company headquartered in Milan,
+  Italy, developing next-generation adeno-associated virus (AAV) gene therapies for
+  inherited retinal diseases with high unmet need. Founded in 2021 by Prof. Alberto
+  Auricchio, the company has built two proprietary vector platforms — dual hybrid and
+  dual intein — that overcome the DNA cargo capacity limit of a single AAV vector by
+  splitting a large expression cassette across two AAV8 vectors that recombine inside
+  the target cell. Its lead programs are AAVB-081 for retinitis pigmentosa due to Usher
+  syndrome type 1B (LUCE-1 Phase 1/2, the first dual AAV gene therapy tested clinically
+  in an ocular indication) and AAVB-039 for ABCA4-associated Stargardt disease (CELESTE
+  Phase 1/2), which holds FDA Fast Track and Orphan Drug designation. The company
+  raised a EUR 61 million Series A and closed a USD 141 million Series B. AAVantgarde
+  publishes no public API, developer program or machine-readable contract; this profile
+  records what its public web surface actually serves.
 url: https://raw.githubusercontent.com/api-evangelist/aavantgardebio/refs/heads/main/apis.yml
+image: https://www.aavantgarde.com/assets/img/AavantgardeBio-logo.svg
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment-pass-2026-09-05
 specificationVersion: '0.20'
 created: '2026-09-05'
 modified: '2026-09-05'
 tags:
 - Company
+- Biotechnology
+- Gene Therapy
+- Life Sciences
+- Pharmaceuticals
+- Clinical Trials
+- Ophthalmology
+- Rare Disease
+- Healthcare
+- Italy
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +41,55 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: VulnerabilityDisclosure
+  url: security/aavantgardebio-vulnerability-disclosure.yml
 - type: Website
-  url: https://equityzen.com/company/aavantgardebio
+  url: https://www.aavantgarde.com/en/
+- type: About
+  url: https://www.aavantgarde.com/en/about/
+- type: Blog
+  url: https://www.aavantgarde.com/en/news/
+- type: PrivacyPolicy
+  url: https://www.aavantgarde.com/en/privacy-notice/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/aavantgarde-bio
+- type: WellKnown
+  url: well-known/aavantgardebio-well-known.yml
+- type: SecurityTxt
+  url: well-known/aavantgardebio-security.txt
+- type: Conformance
+  url: conformance/aavantgardebio-conformance.yml
+- type: DomainSecurity
+  url: security/aavantgardebio-domain-security.yml
+- type: LLMsTxt
+  url: llms/aavantgardebio-llms.txt
+x-enrichment:
+  date: '2026-09-05'
+  status: minimal
+  artifacts_added: 8
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: not-a-software-company
+  detail: >-
+    AAVantgarde Bio is a clinical-stage gene therapy company whose product is an
+    investigational AAV vector, not software — the corporate site has no developer
+    section at all (nav is About / Innovation / Clinical Trials / For Patients / News /
+    Careers / Contact), api., developer., docs., status. and trust. subdomains are all
+    NXDOMAIN, there is no GitHub organization, and the only machine-readable documents
+    the site serves are the OpenID discovery and JWKS files its Umbraco CMS emits for
+    website-member sign-in.
+  evidence:
+    - url: https://www.aavantgarde.com/en/
+      status: 200
+    - url: https://www.aavantgarde.com/llms.txt
+      status: 404
+    - url: https://www.aavantgarde.com/.well-known/api-catalog
+      status: 404
+    - url: https://www.aavantgarde.com/.well-known/agent-card.json
+      status: 404
+    - url: https://www.aavantgarde.com/.well-known/openid-configuration
+      status: 200
+    - url: https://api.github.com/orgs/aavantgarde-bio
+      status: 404
+  checked: '2026-09-05'

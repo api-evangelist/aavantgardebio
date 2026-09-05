@@ -1,0 +1,58 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  https://www.aavantgarde.com/.well-known/openid-configuration (HTTP 200) and
+  https://www.aavantgarde.com/.well-known/jwks (HTTP 200), fetched 2026-09-05.
+note: >-
+  AAVantgarde Bio is a clinical-stage gene therapy company and publishes no developer
+  API. The only standards signal it emits is the OpenID Connect Discovery document its
+  Umbraco-based corporate website serves for website-member authentication. Recorded
+  because the document is real and was fetched; it is NOT a public API authorization
+  surface, and no certification, audit report or compliance program (SOC 2, ISO 27001,
+  HIPAA, GDPR attestation page) was found published anywhere on the site. No
+  Compliance pointer is emitted for that reason.
+
+conformance:
+  - id: oidc
+    name: OpenID Connect Discovery 1.0
+    conforms: true
+    evidence: https://www.aavantgarde.com/.well-known/openid-configuration
+    detail: >-
+      Serves a well-formed discovery document at the RFC 8615 path, with issuer,
+      authorization_endpoint, token_endpoint, userinfo_endpoint, end_session_endpoint,
+      revocation_endpoint and jwks_uri. subject_types_supported [public];
+      id_token_signing_alg_values_supported [RS256]. Scope of the surface is website
+      member sign-in (Umbraco Delivery API member endpoints), not an API product.
+  - id: oauth2
+    name: OAuth 2.0 (RFC 6749) with PKCE (RFC 7636)
+    conforms: true
+    evidence: https://www.aavantgarde.com/.well-known/openid-configuration
+    detail: >-
+      grant_types_supported [authorization_code, refresh_token, client_credentials];
+      response_types_supported [code]; code_challenge_methods_supported [plain, S256].
+      Token endpoint auth methods client_secret_post, client_secret_basic,
+      private_key_jwt. Pushed authorization requests not required; mTLS-bound tokens
+      not supported.
+  - id: rfc7517-jwks
+    name: JSON Web Key Set (RFC 7517)
+    conforms: true
+    evidence: https://www.aavantgarde.com/.well-known/jwks
+    detail: One RSA key, use "sig", alg RS256, public parameters only.
+  - id: rfc9116-security-txt
+    name: security.txt (RFC 9116)
+    conforms: false
+    evidence: https://www.aavantgarde.com/.well-known/security.txt
+    detail: >-
+      Document is served and carries Contact and Expires, but the Expires value
+      (2026-01-01T23:59:00.000Z) is in the past as of the 2026-09-05 probe, so per
+      RFC 9116 section 2.5.5 the file must not be used. No Policy field.
+
+domain_standard:
+  applicable: false
+  detail: >-
+    Reward-only check, deliberately left empty. AAVantgarde's market is inherited
+    retinal disease gene therapy. The health-sector interchange standards this pipeline
+    looks for in a contract (HL7v2, FHIR, X12, CDISC/SDTM for trial submissions) apply
+    to a machine-readable contract, and AAVantgarde publishes none — there is no spec
+    in which a domain-standard signature could be declared. Not a deficiency; nothing
+    to invent here.

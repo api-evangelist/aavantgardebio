@@ -1,0 +1,92 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Direct unauthenticated GET of the RFC 8615 named path list against every host this
+  record knows: the registrable domain (aavantgarde.com), www, and the corporate site
+  host. AAVantgarde Bio publishes no API, so there is no API baseURL host and no
+  OpenAPI servers[] host to probe.
+note: >-
+  Three paths return real documents on www.aavantgarde.com. All three are emitted by
+  the corporate website's CMS (Umbraco), not by a developer API: the OpenID discovery
+  document describes Umbraco's Delivery API *member* authentication endpoints
+  (/umbraco/delivery/api/v1/security/member/...), which exist to authenticate website
+  members, and the JWKS is that authorization server's signing key set. The
+  security.txt is real RFC 9116 but is EXPIRED (Expires 2026-01-01, probed 2026-09-05)
+  and its Contact is the web agency that built the site (sampsonmay.com), not an
+  AAVantgarde security team. Recorded as served documents; not evidence of a public
+  API program.
+
+hosts:
+  - host: www.aavantgarde.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: aavantgardebio-security.txt
+        content_type: text/plain
+        note: >-
+          RFC 9116. Contact mailto:webservices@sampsonmay.com; Expires
+          2026-01-01T23:59:00.000Z — expired at time of probe. No Policy, Encryption,
+          Acknowledgments, Preferred-Languages or Canonical field.
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: aavantgardebio-openid-configuration.json
+        content_type: application/json
+        note: >-
+          Valid OIDC discovery document. issuer https://www.aavantgarde.com/;
+          authorization/token/userinfo/revocation/signout endpoints all under
+          /umbraco/delivery/api/v1/security/member/. scopes_supported [openid,
+          offline_access]; grant types authorization_code, refresh_token,
+          client_credentials; PKCE S256 supported. This is Umbraco CMS member
+          authentication, not a developer API authorization server.
+      - path: /.well-known/jwks
+        status: 200
+        file: aavantgardebio-jwks.json
+        content_type: application/json
+        note: >-
+          JSON Web Key Set named by jwks_uri in the discovery document above. One RSA
+          RS256 signing key. Public key material only.
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /.well-known/aauth-resource.json
+        status: 404
+  - host: aavantgarde.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: aavantgardebio-security.txt
+        note: Apex redirects to www.aavantgarde.com; same document.
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: aavantgardebio-openid-configuration.json
+        note: Apex redirects to www.aavantgarde.com; same document.
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /.well-known/aauth-resource.json
+        status: 404
+
+not_probed:
+  - reason: >-
+      No API host exists. DNS lookups for api.aavantgarde.com,
+      developer.aavantgarde.com, docs.aavantgarde.com, status.aavantgarde.com and
+      trust.aavantgarde.com all returned NXDOMAIN, and apis.yml carries no apis[]
+      entry, so there is no additional host in scope.
