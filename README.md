@@ -80,8 +80,8 @@ Each property below is a page on APIs.io carrying the machine-readable artifact 
 
 Authentication, trust centre, and vulnerability disclosure.
 
-- [Aavantgardebio Domain Security](https://apis.io/security/aavantgardebio/aavantgardebio-domain-security/)
-- [Aavantgardebio Vulnerability Disclosure](https://apis.io/security/aavantgardebio/aavantgardebio-vulnerability-disclosure/)
+- [AAVantgarde Bio Domain Security](https://apis.io/security/aavantgardebio/aavantgardebio-domain-security/)
+- [AAVantgarde Bio Vulnerability Disclosure](https://apis.io/security/aavantgardebio/aavantgardebio-vulnerability-disclosure/)
 
 ## Where to find this API
 
@@ -93,18 +93,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 11.7** — emerging · rubric 0.24.0 · scored 2026-10-17
+**Kin Score 14.4** — emerging · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
-| Discoverability | 55.4 |
+| Discoverability | 66.1 |
 | Contract quality | 0.0 |
 | Contract governance | 18.2 |
-| Operational transparency | 0.0 |
+| Operational transparency | 9.5 |
 | Developer ergonomics | 2.4 |
-| Access clarity | 10.5 |
+| Access clarity | 12.8 |
 
-**Agent readiness 10.8** — agent-aware
+**Agent readiness 10.6** — agent-aware
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -127,6 +127,12 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | — |
 | Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | na |
 
 **Regulatory alignment 21.1** — Health
 
